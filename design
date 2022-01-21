@@ -1,7 +1,0 @@
-fdetails using id, name, price. cud operations.
-order module consists of invoice
-sales is fetched from order based on date.
-
-simply complete  modules without billing 
-order module built like same form.
-internal operations can be done between order and sales.
