@@ -13,6 +13,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="../script.js"></script>
 </head>
 <body>
     <?php require_once('../include/od.php'); ?>
@@ -87,10 +88,6 @@
         <form action="../include/od.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $id; ?>" >
             <div class="form-group">
-                <label>ID: </label>
-                <input type="text" name="id" class="form-control" value="<?php echo $id; ?>">
-            </div>
-            <div class="form-group">
                 <label>Invoice: </label>
                 <input type="text" name="invoice" class="form-control" value="<?php echo $invoice; ?>">
             </div>
@@ -100,7 +97,16 @@
             </div>
             <div class="form-group">
                 <label>Food Name: </label>
-                <input type="text" name="fname" class="form-control" value="<?php echo $fname; ?>">
+                <select name="fname">
+                    <?php
+                    while($rows = $resultset->fetch_assoc())
+                    {
+                        $fname = $rows['fname'];
+                        echo "<option value='$fname'>$fname</option>";
+                    }
+                    ?>
+
+                </select>
             </div>
             <div class="form-group">
                 <label>Quantity: </label>
@@ -110,10 +116,7 @@
                 <label>Price: </label>
                 <input type="text" name="fprice" class="form-control" value="<?php echo $fprice; ?>">
             </div>
-            <div class="form-group">
-                <label>Sub Total: </label>
-                <input type="text" name="subtotal" class="form-control" value="<?php echo $subtotal; ?>">
-            </div>
+
             <div class="form-group">
                 <?php 
                     if($update == true):
@@ -124,7 +127,8 @@
                 <?php endif; ?>
             </div>            
         </form>
-        </div>
+
+        
 </div>
     
 </body>
