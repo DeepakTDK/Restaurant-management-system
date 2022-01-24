@@ -28,15 +28,19 @@
         unset($_SESSION['message']);
     ?>
     </div>
+
     <?php endif ?>
+    
     <div class="container">
     <?php 
     $mysqli = new mysqli('localhost', 'root', '', 'restaurant ms') or die(mysqli_error($mysqli));
     $result = $mysqli->query("select * from orders") or die($mysqli->error);
     //pre_r( $result );
+    $total = $mysqli->query("SELECT invoice, SUM(subtotal) as total FROM orders GROUP BY invoice;")
     ?>
 
     <div class="justify-content-center">
+        <h3>Order Details</h3>
         <table class="table">
             <thead>
                 <tr>
@@ -72,6 +76,24 @@
         </table>
     </div>
 
+<div class="justify-content-center">
+    <h3>Order Total</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Invoice</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <?php 
+                    while($row = $total->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo $row['invoice']; ?></td>
+                        <td><?php echo $row['total']; ?></td>
+                    </tr>
+                    <?php endwhile; ?>
+                </table>
+</div>
 
 <?php   
     function pre_r($array){

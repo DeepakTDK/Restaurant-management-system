@@ -7,7 +7,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'restaurant ms') or die(mysqli_err
 
 $resultset = $mysqli->query("Select fname from food_items");
 
-//$mysqli->query("select invoice, sum(subtotal) from  ")
+
+
 
 $id = 0;
 $update = false;
@@ -30,18 +31,16 @@ if(isset($_POST['save'])){
     $fprice = $_POST['fprice'];   
     //$subtotal = $_POST['subtotal'];
 
- 
-    create Trigger subtotal
-    before INSERT 
-    on orders 
-    for each row 
-    begin
-    set orders.subtotal = orders.quantity * orders.fprice
-    end;
-
+    //subtotal calculation
+    $mysqli->query("CREATE TRIGGER subt BEFORE INSERT ON orders
+    FOR EACH ROW SET
+    new.subtotal = new.quantity*new.fprice;");
 
     $mysqli->query("INSERT INTO orders (invoice, date, fname, quantity, fprice) VALUES ('$invoice', '$date', '$fname', '$quantity', '$fprice')") or 
     die($mysqli->error);
+
+    //total calculation
+    $total = $mysqli->query("SELECT invoice, SUM(subtotal) as total FROM orders GROUP BY invoice;");
 
     $_SESSION['message'] = "Record saved!" ;
     $_SESSION['msg_type'] = "success" ;
