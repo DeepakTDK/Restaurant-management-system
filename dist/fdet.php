@@ -36,6 +36,7 @@
     ?>
 
     <div class="justify-content-center">
+        <h3><u>Food Details</u></h3>
         <table class="table">
             <thead>
                 <tr>
@@ -74,7 +75,7 @@
 
 
 
-    <h3 class="h3">Food Details</h3>
+    <h3 class="h3"><u>Food</u></h3>
         <div class="justify-content-center">
         <form action="../include/fd.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $id; ?>" >

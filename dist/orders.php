@@ -30,17 +30,17 @@
     </div>
 
     <?php endif ?>
-    
+
     <div class="container">
     <?php 
     $mysqli = new mysqli('localhost', 'root', '', 'restaurant ms') or die(mysqli_error($mysqli));
     $result = $mysqli->query("select * from orders") or die($mysqli->error);
     //pre_r( $result );
-    $total = $mysqli->query("SELECT invoice, SUM(subtotal) as total FROM orders GROUP BY invoice;")
+    $total = $mysqli->query("SELECT date, invoice, SUM(subtotal) as total FROM orders GROUP BY invoice;")
     ?>
 
     <div class="justify-content-center">
-        <h3>Order Details</h3>
+        <h3><u>Order Details</u></h3>
         <table class="table">
             <thead>
                 <tr>
@@ -77,10 +77,11 @@
     </div>
 
 <div class="justify-content-center">
-    <h3>Order Total</h3>
+    <h3><u>Order Total</u></h3>
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Date</th>
                             <th>Invoice</th>
                             <th>Total</th>
                         </tr>
@@ -88,6 +89,7 @@
                     <?php 
                     while($row = $total->fetch_assoc()): ?>
                     <tr>
+                        <td><?php echo $row['date']; ?></td>
                         <td><?php echo $row['invoice']; ?></td>
                         <td><?php echo $row['total']; ?></td>
                     </tr>
@@ -105,7 +107,7 @@
 
 
 
-    <h3 class="h3">Orders</h3>
+    <h3 class="h3"><u>Orders</u></h3>
         <div class="justify-content-center">
         <form action="../include/od.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $id; ?>" >
@@ -121,7 +123,7 @@
                 <label>Food Name: </label>
                 <select name="fname">
                     <?php
-                    while($rows = $resultset->fetch_assoc())
+                    while($rows = $fetchname->fetch_assoc())
                     {
                         $fname = $rows['fname'];
                         echo "<option value='$fname'>$fname</option>";
@@ -136,7 +138,16 @@
             </div>
             <div class="form-group">
                 <label>Price: </label>
-                <input type="text" name="fprice" class="form-control" value="<?php echo $fprice; ?>">
+                <select name="fprice">
+                <?php 
+                while($rows = $fetchprice->fetch_assoc())
+                {
+                    $fname = $rows['fname'];
+                    $fprice = $rows['fprice'];
+                    echo "<option value='$fprice'>$fname - $fprice</option>";
+                }
+                ?>
+                </select>
             </div>
 
             <div class="form-group">

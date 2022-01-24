@@ -5,9 +5,9 @@ error_reporting(0);
 
 $mysqli = new mysqli('localhost', 'root', '', 'restaurant ms') or die(mysqli_error($mysqli));
 
-$resultset = $mysqli->query("Select fname from food_items");
+$fetchname = $mysqli->query("Select fname from food_items");
 
-
+$fetchprice = $mysqli->query("Select fname, fprice from food_items");
 
 
 $id = 0;
@@ -40,7 +40,7 @@ if(isset($_POST['save'])){
     die($mysqli->error);
 
     //total calculation
-    $total = $mysqli->query("SELECT invoice, SUM(subtotal) as total FROM orders GROUP BY invoice;");
+    $total = $mysqli->query("SELECT date, invoice, SUM(subtotal) as total FROM orders GROUP BY invoice;");
 
     $_SESSION['message'] = "Record saved!" ;
     $_SESSION['msg_type'] = "success" ;

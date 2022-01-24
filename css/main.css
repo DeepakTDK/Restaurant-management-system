@@ -1,0 +1,13 @@
+body{
+    background-size: auto;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.content{
+    color: #E50914;
+    font-family: Bebas Neue;
+    text-align: center;
+    font-size: 100px;
+}
+    
