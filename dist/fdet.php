@@ -37,6 +37,8 @@
 
     <div class="justify-content-center">
         <h3><u>Food Details</u></h3>
+        <button class="btn btn-info" onclick="window.location.href='index.html'">Home</button>
+        <button class="btn btn-info" onclick="window.location.href='orders.php'">Orders</button>
         <table class="table">
             <thead>
                 <tr>
@@ -78,6 +80,7 @@
     <h3 class="h3"><u>Food</u></h3>
         <div class="justify-content-center">
         <form action="../include/fd.php" method="POST">
+
             <input type="hidden" name="id" value="<?php echo $id; ?>" >
             <div class="form-group">
                 <label>ID: </label>

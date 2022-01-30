@@ -41,6 +41,8 @@
 
     <div class="justify-content-center">
         <h3><u>Order Details</u></h3>
+        <button class="btn btn-info" onclick="window.location.href='index.html'">Home</button>
+        <button class="btn btn-info" onclick="window.location.href='fdet.php'">Food Details</button>
         <table class="table">
             <thead>
                 <tr>
