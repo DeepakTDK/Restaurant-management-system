@@ -16,7 +16,9 @@
 <script src="../script.js"></script>
 </head>
 <body>
-    <?php require_once('../include/od.php'); ?>
+    <?php 
+    require "admin_auth.php";
+    require_once('../include/od.php'); ?>
 
     <?php
     if(isset($_SESSION['message'])): ?>
@@ -41,8 +43,9 @@
 
     <div class="justify-content-center">
         <h3><u>Order Details</u></h3>
-        <button class="btn btn-info" onclick="window.location.href='index.html'">Home</button>
+        <button class="btn btn-info" onclick="window.location.href='index.php'">Home</button>
         <button class="btn btn-info" onclick="window.location.href='fdet.php'">Food Details</button>
+        <button class="btn btn-info" onclick="window.location.href='auth.php?logout'">Logout</button> 
         <table class="table">
             <thead>
                 <tr>

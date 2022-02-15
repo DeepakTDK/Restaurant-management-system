@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="../css/main.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,23 +14,22 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <link href="../css/land.css" rel="stylesheet">
 </head>
 <body>
-    <br><br><br><br><br><br>
-    <div class="cont">
-        <h1>Restaurant Management System</h1>
-        <h3>Login</h3>
-<form action = "auth.php" method="post">
-        <p>Username</p>
-        <input type="text" placeholder="Username" name="username"><br><br>
-        <p>Password</p>
-        <input type="password" placeholder="Password" name="password"><br><br>
-        <input type="hidden" name="login" value="login"/>
-        <button class="btn btn-info" type="submit">Login</button>
-</form>
-</div>
+    <?php
+        require "admin_auth.php";
+    ?>
+    <div class="content">
+        
+        
+        <br>
+        <p>Restaurant management system</p>
+        <button class="btn btn-info" onclick="window.location.href='fdet.php'">Food Items</button>
+        <button class="btn btn-info" onclick="window.location.href='orders.php'">Order</button>  
+        <br><br><button class="btn btn-info" onclick="window.location.href='auth.php?logout'">Logout</button>    
+    </div>
+    
+        
+
 </body>
 </html>
-

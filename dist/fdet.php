@@ -15,7 +15,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php require_once('../include/fd.php'); ?>
+    <?php 
+    require "admin_auth.php";
+    require_once('../include/fd.php'); ?>
 
     <?php
     if(isset($_SESSION['message'])): ?>
@@ -37,8 +39,9 @@
 
     <div class="justify-content-center">
         <h3><u>Food Details</u></h3>
-        <button class="btn btn-info" onclick="window.location.href='index.html'">Home</button>
+        <button class="btn btn-info" onclick="window.location.href='index.php'">Home</button>
         <button class="btn btn-info" onclick="window.location.href='orders.php'">Orders</button>
+        <button class="btn btn-info" onclick="window.location.href='auth.php?logout'">Logout</button> 
         <table class="table">
             <thead>
                 <tr>

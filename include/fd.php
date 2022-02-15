@@ -1,7 +1,7 @@
 <?php
-
-session_start();
 error_reporting(0);
+session_start();
+
 
 $mysqli = new mysqli('localhost', 'root', '', 'restaurant ms') or die(mysqli_error($mysqli));
 
